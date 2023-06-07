@@ -7,7 +7,7 @@
     "k": 50,
     "batchsize": 10,
     "epochs": 20,
-    "alpha": 0.5,
+    "alpha": 0,
     "lamb": 0.01,
     "train_lr": 0.004,
     "eta": 1,
