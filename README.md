@@ -1,28 +1,44 @@
-## Confidence-aware Personalized Federated Learning via Variational Expectation Maximization [CVPR 2023]
-
+## Surrogate Model Extension (SME): A Fast and Accurate Weight Update Attack on Federated Learning [Accepted at ICML 2023]
 
 ### Abstract
-Federated Learning (FL) is a distributed learning scheme to train a shared model across clients. One common and fundamental challenge in FL is that the sets of data across clients could be non-identically distributed and have different sizes. Personalized Federated Learning (PFL) attempts to solve this challenge via locally adapted models. In this work, we present a novel framework for PFL based on hierarchical Bayesian modeling and variational inference. A global model is introduced as a latent variable to augment the joint distribution of clients' parameters and capture the common trends of different clients, optimization is derived based on the principle of maximizing the marginal likelihood and conducted using variational expectation maximization. Our algorithm gives rise to a closed-form estimation of a confidence value which comprises the uncertainty of clients' parameters and local model deviations from the global model. The confidence value is used to weigh clients' parameters in the aggregation stage and adjust the regularization effect of the global model. We evaluate our method through extensive empirical studies on multiple datasets. Experimental results show that our approach obtains competitive results under mild heterogeneous circumstances while significantly outperforming state-of-the-art PFL frameworks in highly heterogeneous settings.
+In Federated Learning (FL) and many other distributed training frameworks, collaborators can hold their private data locally and only share the network weights trained with the local data after multiple iterations. Gradient inversion is a family of privacy attacks that recovers data from its generated gradients. Seemingly, FL can provide a degree of protection against gradient inversion attacks on weight updates, since the gradient of a single step is concealed by the accumulation of gradients over multiple local iterations. In this work, we propose a principled way to extend gradient inversion attacks to weight updates in FL, thereby better exposing weaknesses in the presumed privacy protection inherent in FL. In particular, we propose a surrogate model method based on the characteristic of two-dimensional gradient flow and low-rank property of local updates. Our method largely boosts the ability of gradient inversion attacks on weight updates containing many iterations and achieves state-of-the-art (SOTA) performance. Additionally, our method runs up to $100\times$ faster than the SOTA baseline in the common FL scenario. Our work re-evaluates and highlights the privacy risk of sharing network weights.
 
 <p align="center">
-      <img width="391" height="268" src=".illustration.png" alt>
+      <img width="902" height="291" src=".illustration.png" alt>
 </p>
 <p align="center">
-    <em>An overview of our confidence-aware personalized federated learning framework.</em>
+    <em>Figure 1: An overview of our confidence-aware personalized federated learning framework.</em>
 </p>
 
-### Data Heterogeneity
-In this repository, we present the implementation of two scenarios, label distribution skew and label concept drift, using the CIFAR-10 and CIFAR-100 datasets respectively. Additionally, we consider data quantity disparity for both scenarios, where the training set is randomly partitioned into J pieces and then distributed to J clients. Furthermore, this repository supports data scarcity, allowing users to simulate situations where only limited amount of data is available.
+<p align="center">
+      <img width="1000" height="463" src=".visualization.png" alt>
+</p>
+<p align="center">
+    <em> Figure 2: Visualization of the reconstructed images. </em>
+</p>
+
 
 ### Download
 Make sure that conda is installed.
 ```sh
-git clone git@github.com:JunyiZhu-AI/confidence_aware_PFL.git
-cd confidence_aware_PFL
-conda create -n vem python==3.8
-conda activate vem
+git clone git@github.com:JunyiZhu-AI/surrogate_model_extension.git
+cd surrogate_model_extension
+conda create -n sme python==3.9.12
+conda activate sme
 conda install pip
 pip install -r requirement.txt
+```
+Next, prepare the FEMNIST dataset.
+```sh
+mkdir data
+cd data
+git clone https://github.com/TalwalkarLab/leaf.git
+cd leaf/data/femnist
+./preprocess.sh -s niid --sf 0.05 -k 0 -t sample
+cd ../../../
+mv leaf/data/femnist ./
+rm -rf leaf
+cd ../
 ```
 
 ### Run
