@@ -64,12 +64,12 @@ python3 -m experiments.run_experiment --config experiments/configs/femnist_sme.j
 python3 -m experiments.run_experiment --config experiments/configs/femnist_ig.json
 ```
 
-5. SME attack on a CNN training with FEMNIST:
+5. SME attack on a ViT training with FEMNIST:
 ```sh
 python3 -m experiments.run_experiment --config experiments/configs/vit_sme.json
 ```
 
-6. Vanilla gradient inversion attack on a CNN training with FEMNIST:
+6. Vanilla gradient inversion attack on a ViT training with FEMNIST:
 ```sh
 python3 -m experiments.run_experiment --config experiments/configs/vit_ig.json
 ```
