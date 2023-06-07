@@ -8,12 +8,12 @@ from sme import attack
 @click.option("--dataset", type=click.Choice(["CIFAR100", "FEMNIST"]), default="CIFAR100")
 # federated learning parameters
 @click.option("--model", type=click.Choice(["LeNet", "MLP", "CNNcifar", "CNNmnist", "ResNet8", "ViT"]), default="CNNcifar")
-@click.option("--batchsize", default=10)
-@click.option("--train_lr", default=0.01)
-@click.option("--k", default=10)
-@click.option("--epochs", default=20)
+@click.option("--batchsize", default=10, help="Batch size of federated learning.")
+@click.option("--train_lr", default=0.01, help="Learning rate of federated learning.")
+@click.option("--k", default=10, help="Size of local dataset.")
+@click.option("--epochs", default=20, help="Number of epochs for the local training in the federated learning.")
 # reconstruction attack parameters
-@click.option("--eta", default=1e-3, help="Step size of reconstruction.")
+@click.option("--eta", default=1e-3, help="Step size of the reconstruction attack.")
 @click.option("--beta", default=1e-3, help="Step size of alpha.")
 @click.option("--alpha", default=0., help="Interpolation factor.")
 @click.option("--iters", default=5000, help="Optimization iterations of reconstruction.")
