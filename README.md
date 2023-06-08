@@ -7,7 +7,7 @@ In Federated Learning (FL) and many other distributed training frameworks, colla
       <img width="902" height="277" src=".illustration.png" alt>
 </p>
 <p align="center">
-    <em>Figure 1: An overview of our confidence-aware personalized federated learning framework.</em>
+    <em>Figure 1: Illustration of the threat model (left) and working pipeline of our surrogate model extension (right). In FL, a client trains the received model w_0 for T iterations with local data set D of size N, then sends the weights and the number N back to the server. An adversary observes the messages and launches the SME attack through optimization of dummy data and surrogate model.</em>
 </p>
 
 <p align="center">
