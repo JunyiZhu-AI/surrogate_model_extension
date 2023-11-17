@@ -96,10 +96,12 @@ python3 -m experiments.run_experiment \
 
 ### Citation
 ```
-@inproceedings{Zhu2023b,
-  TITLE = {Surrogate Model Extension ({SME}): A Fast and Accurate Weight Update Attack on Federated Learning},
-  AUTHOR = {Zhu, Junyi and Yao, Ruicong and Blaschko, Matthew B.},
-  BOOKTITLE = {International Conference on Machine Learning},
-  YEAR = {2023},
+@InProceedings{pmlr-v202-zhu23m,
+  title = 	 {Surrogate Model Extension ({SME}): A Fast and Accurate Weight Update Attack on Federated Learning},
+  author =       {Zhu, Junyi and Yao, Ruicong and Blaschko, Matthew B.},
+  booktitle = 	 {Proceedings of the 40th International Conference on Machine Learning},
+  year = 	 {2023},
+  series = 	 {Proceedings of Machine Learning Research},
+  publisher =    {PMLR},
 }
 ```
