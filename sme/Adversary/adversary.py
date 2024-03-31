@@ -81,7 +81,7 @@ class IWU:
         stats = []
         for i in range(iters):
             optimizer.zero_grad()
-            alpha_opti.zero_grad()
+            alpha_opti.zero_grad(set_to_none=False)
             _net.zero_grad()
 
             if self.rec_alpha:
